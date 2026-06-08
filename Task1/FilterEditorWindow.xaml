@@ -1,0 +1,69 @@
+﻿<Window x:Class="Task1.FilterEditorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Task1"
+        mc:Ignorable="d"
+        Title="Filter Editor"
+        Width="640" Height="420"
+        ResizeMode="CanMinimize"
+        FlowDirection="LeftToRight"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="160"/>
+            <ColumnDefinition Width="8"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <DockPanel Grid.Column="0">
+
+            <TextBlock DockPanel.Dock="Top" Text="Filters" FontWeight="Bold" FontSize="13" Margin="0,0,0,4"/>
+
+            <StackPanel DockPanel.Dock="Bottom" Margin="0,6,0,0">
+                <Button x:Name="NewFilterButton" Content="+ New Filter" Click="NewFilterButton_Click" Margin="0,0,0,4" Padding="4,3"/>
+                <Button x:Name="DeleteFilterButton" Content="− Delete Filter" Click="DeleteFilterButton_Click" Padding="4,3"/>
+            </StackPanel>
+
+            <ListBox x:Name="FilterListBox" SelectionChanged="FilterListBox_SelectionChanged" DisplayMemberPath="Name"/>
+        </DockPanel>
+
+        <DockPanel Grid.Column="2">
+
+            <DockPanel DockPanel.Dock="Top" Margin="0,0,0,6">
+                <TextBlock Text="Name: " VerticalAlignment="Center" FontSize="13"/>
+                <TextBox x:Name="FilterNameBox" FontSize="13" TextChanged="FilterNameBox_TextChanged"/>
+            </DockPanel>
+
+            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal"
+                        HorizontalAlignment="Right" Margin="0,6,0,0">
+                <Button x:Name="SaveToPanelButton" Content="💾  Save to Panel" Click="SaveToPanelButton_Click" Padding="10,4" FontSize="13"
+                        IsEnabled="False"
+                        Margin="0,0,6,0"/>
+                <Button x:Name="ApplyButton" Content="▶  Apply to Image" Click="ApplyButton_Click" Padding="10,4" FontSize="13" IsEnabled="False"/>
+            </StackPanel>
+
+            <TextBlock DockPanel.Dock="Bottom"
+                       FontSize="11" Foreground="#606060"
+                       Margin="0,4,0,0"
+                       Text="Left-click: add point  |  Drag: move point  |  Right-click: delete point"/>
+
+            <Viewbox Stretch="None" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Border BorderBrush="#606060" BorderThickness="1">
+                    <Canvas x:Name="EditorCanvas"
+                            Width="256" Height="256"
+                            Background="White"
+                            Cursor="Cross"
+                            MouseLeftButtonDown="EditorCanvas_MouseLeftButtonDown"
+                            MouseMove="EditorCanvas_MouseMove"
+                            MouseLeftButtonUp="EditorCanvas_MouseLeftButtonUp"
+                            MouseRightButtonDown="EditorCanvas_MouseRightButtonDown"/>
+                </Border>
+            </Viewbox>
+
+        </DockPanel>
+    </Grid>
+</Window>
+

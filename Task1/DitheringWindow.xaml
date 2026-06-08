@@ -1,0 +1,47 @@
+﻿<Window x:Class="Task1.DitheringWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Task1"
+        mc:Ignorable="d"
+        Title="Dithering &amp; Quantization"
+        Width="320" Height="360"
+        ResizeMode="CanMinimize"
+        WindowStartupLocation="CenterScreen">
+
+    <StackPanel Margin="12">
+        
+        <TextBlock Text="Greyscale Conversion" FontWeight="Bold" FontSize="13" Margin="0,0,0,6"/>
+
+        <Button x:Name="GreyscaleButton" Content="Convert to Greyscale" Click="GreyscaleButton_Click" Padding="8,4" FontSize="12"
+                HorizontalAlignment="Left" Margin="0,0,0,16"/>
+
+        <Separator Margin="0,0,0,16"/>
+
+        <TextBlock Text="Random Dithering" FontWeight="Bold" FontSize="13" Margin="0,0,0,6"/>
+
+        <DockPanel Margin="0,0,0,8">
+            <TextBlock Text="Levels per channel (K):" VerticalAlignment="Center" FontSize="12" Margin="0,0,8,0"/>
+            <TextBox x:Name="DitherLevelsBox" Text="2" Width="50" FontSize="12" VerticalAlignment="Center" DockPanel.Dock="Right"/>
+        </DockPanel>
+
+        <TextBlock Text="K=2: black/white   K=256: no quantization" FontSize="11" Foreground="#606060" Margin="0,0,0,8"/>
+
+        <Button x:Name="ApplyDitheringButton" Content="Apply Random Dithering" Click="ApplyDitheringButton_Click"
+                Padding="8,4" FontSize="12" HorizontalAlignment="Left" Margin="0,0,0,16"/>
+
+        <Separator Margin="0,0,0,16"/>
+
+        <TextBlock Text="Median Cut Quantization" FontWeight="Bold" FontSize="13" Margin="0,0,0,6"/>
+
+        <DockPanel Margin="0,0,0,8">
+            <TextBlock Text="Number of colours:" VerticalAlignment="Center" FontSize="12" Margin="0,0,8,0"/>
+            <TextBox x:Name="MedianColorsBox" Text="16" Width="50" FontSize="12" VerticalAlignment="Center" DockPanel.Dock="Right"/>
+        </DockPanel>
+
+        <Button x:Name="ApplyMedianCutButton" Content="Apply Median Cut" Click="ApplyMedianCutButton_Click" Padding="8,4" FontSize="12"
+                HorizontalAlignment="Left"/>
+
+    </StackPanel>
+</Window>
